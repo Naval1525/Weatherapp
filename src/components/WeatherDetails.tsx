@@ -5,6 +5,7 @@ import { LuEye, LuSunrise, LuSunset } from "react-icons/lu";
 import { FiDroplet } from "react-icons/fi";
 import { MdAir } from "react-icons/md";
 import { ImMeter } from "react-icons/im";
+import { motion } from "framer-motion";
 
 export interface WeatherDetailProps {
   visability: string;
@@ -69,10 +70,15 @@ export interface SingleWeatherDetailProps {
 
 function SingleWeatherDetail(props: SingleWeatherDetailProps) {
   return (
-    <div className="flex flex-col justify-between gap-2 items-center text-xs font-semibold text-black/80">
+    <motion.div
+      className="flex flex-col justify-between gap-2 items-center text-xs font-semibold text-black/80"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <p className="whitespace-nowrap">{props.information}</p>
       <div className="text-3xl">{props.icon}</div>
       <p>{props.value}</p>
-    </div>
+    </motion.div>
   );
 }

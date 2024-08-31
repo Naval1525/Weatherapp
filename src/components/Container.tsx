@@ -2,15 +2,20 @@
 
 import { cn } from "@/utils/cn";
 import React from "react";
+import { motion, MotionProps } from "framer-motion";
 
-export default function Container(props: React.HTMLProps<HTMLDivElement>) {
+interface ContainerProps extends React.HTMLProps<HTMLDivElement>, MotionProps {}
+
+const Container: React.FC<ContainerProps> = ({ className, ...props }) => {
   return (
-    <div
+    <motion.div
       {...props}
       className={cn(
         "w-full bg-white border rounded-xl flex py-4 shadow-sm",
-        props.className
+        className
       )}
     />
   );
-}
+};
+
+export default Container;
